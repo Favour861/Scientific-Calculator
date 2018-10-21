@@ -1,0 +1,106 @@
+#calc{
+	background-color: black;
+	width: 20%;
+	border-radius: 5px;
+	margin: 0 auto;
+	padding: 10px;
+	box-shadow: 6px 6px 2px grey;
+}
+#text1{
+	font-family: segoe UI;
+	color: white;
+	font-size: 10pt;
+	float: left;
+}
+#top-right-box{
+	float: right;
+	background: grey;
+	height: 30px;
+	width: 40%;
+}
+#line{
+	background: white;
+	height: 2px;
+	margin-top: 50px;
+}
+#display_area{
+	background: white;
+	margin-top: 10px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px solid #DC143C;
+}
+input{
+	border-style: none;
+	font-size: 14pt;
+	font-family: lcd;
+}
+
+.result{
+	padding-left: 50px;
+	direction: rtl;
+}
+#operation{
+	margin-top: 5px;
+	text-align: center;
+}
+.op_btn{
+	background: linear-gradient(white, white, grey);
+	color: #081F2C;
+	font-family: Arial;
+	font-size: 18pt;
+	border-style: none;
+	border-radius: 3px;
+	width: 20%;
+	box-shadow: 2px 2px 5px white;
+	cursor: pointer;
+}
+.op_btn:hover{
+	background: #DC143C;
+	color: white;
+}
+#line2{
+	background: white;
+	height: 2px;
+	margin-top: 10px;
+}
+#number_area{
+	background: #DC143C;
+	padding-bottom: 10px;
+	border-bottom: 2px solid white;
+	border-radius: 5px;
+	padding-left: 3px;
+}
+.btn{
+	background: linear-gradient(white, white, grey);
+	color: #081F2C;
+	font-family: Arial;
+	font-size: 18pt;
+	border-style: none;
+	border-radius: 3px;
+	width: 70%;
+	margin-top: 10px;
+	margin-right: 20px;
+	border-bottom: 2px solid white;
+	cursor: pointer;
+}
+.btn:hover{
+	background: #DC143C;
+	color: white;
+}
+tr{
+	border-right: 2px solid white;
+}
+#text2{
+	color: white;
+	font-family: segoe UI;
+	font-family: 12pt;
+	margin-top: 10px;
+	position: relative;
+	margin-bottom: -10px;
+}
+@media (max-width: 1260px) and (min-width: 100px){
+	.result{
+		padding-left: 0px;
+	}
+}
