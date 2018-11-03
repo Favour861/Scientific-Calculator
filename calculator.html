@@ -2,10 +2,143 @@
 <html>
 <head>
 	<title>CALCULATOR</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="calculator.css">
 </head>
-<script type="text/javascript">
-	
+<script>
+	screen=false;
+	a="";
+	b="";
+	oprp="";
+	function del(){
+		if(screen){
+		scv.value=scv.value.slice(0, -1)
+		}
+	}
+	function ce(){
+		if(screen){
+			scv.value=0;
+			operator.innerHTML="";
+			rs.value="";
+		}
+	}
+	function on(){
+		screen=true;
+		scv.value=0;
+		 // mult=rat=plus=minus=false;
+	}
+	function off(){
+		screen=false;
+		scv.value="Screen Off";
+	}
+	function button(x){
+		if(screen){
+			if(scv.value=="0"){
+			scv.value=x;
+			}
+			else {
+			scv.value=scv.value+x;
+			}
+		}
+	}
+	function ans(){
+		scv.value=rs.value;
+	}
+	function opr(y){
+		if(screen){
+			oprp=y;
+			a = scv.value;
+			scv.value="";
+			operator.innerHTML=y;
+			if(y=='sqrt'){
+				operator.innerHTML='&#8730';
+			}
+			if(y=='cbrt'){
+				operator.innerHTML='&#8731';
+			}
+			if(y=='rsp'){
+				operator.innerHTML='&#8731';
+			}
+			if(y=='pie'){
+				operator.innerHTML='&#8508;';
+			}
+		}
+	}
+	function opp(){
+		if(screen){
+			b = scv.value;
+			operator.innerHTML='=';
+			if(oprp==""){
+				rs.value=scv.value;
+			}
+			if(oprp=='+'){
+				rs.value= parseFloat(a) + parseFloat(b)
+			}
+			else if(oprp=='-'){
+				rs.value= parseFloat(a) - parseFloat(b)
+			}
+			else if(oprp=='÷'){
+				rs.value= parseFloat(a) / parseFloat(b)
+			}
+			else if(oprp=='x'){
+				rs.value= parseFloat(a) * parseFloat(b)
+			}
+			else if(oprp=='cos'){
+				rs.value= Math.cos(a * Math.PI / 180);
+			}
+			else if(oprp=='sin'){
+				rs.value= Math.sin(a * Math.PI / 180);
+			}
+			else if(oprp=='tan'){
+				rs.value= Math.tan(a * Math.PI / 180);
+			}
+			else if(oprp=='cosh'){
+				rs.value= Math.cosh(a);
+			}
+			else if(oprp=='sinh'){
+				rs.value= Math.sinh(a);
+			}
+			else if(oprp=='tanh'){
+				rs.value= Math.tanh(a);
+			}
+			else if(oprp=='cos<sup>-1</sup>'){
+				rs.value= Math.acos(a * Math.PI / 180);
+			}
+			else if(oprp=='sin<sup>-1</sup>'){
+				rs.value= Math.asin(a * Math.PI / 180);
+			}
+			else if(oprp=='tan<sup>-1</sup>'){
+				rs.value= Math.atan(a * Math.PI / 180);
+			}
+			else if(oprp=='log'){
+				rs.value= Math.log(a);
+			}
+			else if(oprp=='sqrt'){
+				rs.value= Math.sqrt(a);
+			}
+			else if(oprp=='cbrt'){
+				rs.value= Math.cbrt(a);
+			}
+			else if(oprp=='x<sup>y</sup>'){
+				rs.value= Math.pow(a, b);
+			}
+			else if(oprp=='x<sup>2</sup>'){
+				rs.value= Math.pow(a, 2);
+			}
+			else if(oprp=='x<sup>3</sup>'){
+				rs.value= Math.pow(a, 3);
+			}
+			else if(oprp=='pie'){
+				rs.value=Math.PI;
+			}
+			else if(oprp=='E<sup>x</sup>'){
+				rs.value=Math.exp(a);
+			}
+			else if(oprp=='1/x'){
+				rs.value=1/a;
+			}
+		}
+	}
 </script>
 <body>
 	<div id="calc">
@@ -15,44 +148,64 @@
 		</div>
 		<div id="line">&nbsp;</div>
 		<div id="display_area">
-			<input type="text" placeholder="Enter First Value" id="fr">
-			<input type="text" placeholder="Enter Second Value" id="sd">
-			<input type="text" id="ans" class="result">
+			<input id="scv" value="Screen Off" style="width: 80%"><span id="operator" style="font-size: 120%"></span>
+			<input id="rs" style="float: right; text-align: right;" class="result"></p>
 		</div>
 		<div id="line2">&nbsp;</div>
 		<div id="operation">
-			<button class="op_btn">+</button>
-			<button class="op_btn">--</button>
-			<button class="op_btn">/</button>
-			<button class="op_btn">x</button>
+				<button class="op_btn" onclick="opr('cos')">cos</button>
+				<button class="op_btn" onclick="opr('sin')">sin</button>
+				<button class="op_btn" onclick="opr('tan')">tan</button>
+				<button class="op_btn" onclick="opr('cosh')">cosh</button>
+				<button class="op_btn" onclick="opr('sinh')">sinh</button><br><br>
+
+				<button class="op_btn" onclick="opr('cos<sup>-1</sup>')"><small>cos<sup>-1</sup></small></button>
+				<button class="op_btn" onclick="opr('sin<sup>-1</sup>')"><small>sin<sup>-1</sup></small></button>
+				<button class="op_btn" onclick="opr('tan<sup>-1</sup>')"><small>tan<sup>-1</sup></small></button>
+				<button class="op_btn" onclick="opr('log')">log</button>
+				<button class="op_btn" onclick="opr('tanh')">tanh</button><br><br>
+
+				<button class="op_btn" onclick="opr('sqrt')">&#8730;</button>
+				<button class="op_btn" onclick="opr('cbrt')">&#8731;</button>
+				<button class="op_btn" onclick="opr('x<sup>y</sup>')">x<sup>y</sup></button>
+				<button class="op_btn" onclick="opr('x<sup>2</sup>')">x<sup>2</sup></button>
+				<button class="op_btn" onclick="opr('x<sup>3</sup>')">x<sup>3</sup></button><br><br>
+
+				<button class="op_btn" onclick="opr('E<sup>x</sup>')">E<sup>x</sup></button>
+				<button class="op_btn" onclick="opr('1/x')">1/x</button>
+				<button class="op_btn" onclick="opr('pie')">&#8508;</button>
+				<button class="op_btn" onclick="button('-')">±</button>
+				<button class="btn" onclick="del()" style="color: red;">DEL</button><br><br>
 		</div>
-		<div id="line2">&nbsp;</div>
+		<!-- <div id="line2">&nbsp;</div> -->
 		<div id="number_area">
-			<table align="center">
-				<tr>
-					<td><button class="btn">7</button></td>
-					<td><button class="btn">8</button></td>
-					<td><button class="btn">9</button></td>
-				</tr>
-				<tr>
-					<td><button class="btn">4</button></td>
-					<td><button class="btn">5</button></td>
-					<td><button class="btn">6</button></td>
-				</tr>
-				<tr>
-					<td><button class="btn">1</button></td>
-					<td><button class="btn">2</button></td>
-					<td><button class="btn">3</button></td>
-				</tr>
-				<tr>
-					<td><button class="btn">00</button></td>
-					<td><button class="btn">0</button></td>
-					<td><button class="btn">000</button></td>
-				</tr>
-				<tr>
-					<td colspan="3" align="center"><button class="btn">=</button></td>
-				</tr>
-			</table>
+				<button class="btn" onclick="button(7)">7</button>
+				<button class="btn" onclick="button(8)">8</button>
+				<button class="btn" onclick="button(9)">9</button>
+				<button class="btn" onclick="opr('+')">+</button><br><br>
+			
+				<button class="btn" onclick="button(6)">6</button>
+				<button class="btn" onclick="button(5)">5</button>
+				<button class="btn" onclick="button(4)">4</button>
+				<button class="btn" onclick="opr('-')">-</button><br><br>
+			
+			
+				<button class="btn" onclick="button(3)">3</button>
+				<button class="btn" onclick="button(2)">2</button>
+				<button class="btn" onclick="button(1)">1</button>
+				<button class="btn" onclick="opr('÷')">÷</button><br><br>
+			
+				<button class="btn" onclick="ans()" style="color: red">Ans</button>
+				<button class="btn" onclick="button(0)">0</button>
+				<button class="btn" onclick="button('.')">.</button>
+				<button class="btn" onclick="opr('x')">x</button><br><br>
+			
+				<button class="btn" onclick="ce()" style="color: red">CE</button>
+				<button onclick="on()" class="btn" id="state">ON</button>
+				<button onclick="off()" class="btn" id="state">OFF</button>
+				<button onclick="opp()" class="btn">=</button>
+			
+		</table>
 		</div>
 		<p id="text2" align="center">&#169; Favour Corporation</p>
 	</div>
