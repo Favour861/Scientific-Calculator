@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CALCULATOR</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<script>
+	screen=false;
+	a="";
+	b="";
+
+	function del(){
+		scv.value=scv
+	}
+	function on(){
+		screen=true;
+		scv.value=0;
+		 // mult=rat=plus=minus=false;
+	}
+	function off(){
+		screen=false;
+		scv.value="";
+	}
+	function button(x){
+		if(screen){
+			if(scv.value!==""){
+			scv.value=scv.value+x;
+			}
+			if(scv.value==""){
+			scv.value=x;
+			}
+		}
+	}
+	function plus(){
+		if(screen){
+		plus=true;minus=mult=rat=false;
+		operator.innerHTML= '+';
+		a = scv.value;
+		scv.value="";
+		}
+	}
+	function minus(){
+		if(screen){
+		minus=true; plus=mult=rat=false;
+		operator.innerHTML= '-';
+		a = scv.value;
+		scv.value="";
+		}
+	}
+	function mult(){
+		if(screen){
+		mult=true; plus=rat=minus=false;
+		operator.innerHTML= 'x';
+		a = scv.value;
+		scv.value="";
+		}
+	}
+	function rat(){
+		if(screen){
+		minus=false; plus=false; mult=false; rat=true;
+		operator.innerHTML= '÷';
+		a = scv.value;
+		scv.value="";
+		}
+	}
+	function opp(){
+		if(screen){
+			b = scv.value;
+			if(plus){
+				rs.value=parseFloat(a) + parseFloat(b);
+				scv.value=rs.value;
+			}
+			if(minus){
+				rs.value=parseFloat(a) - parseFloat(b);
+				scv.value=rs.value;
+			}
+			if(rat){
+				rs.value=parseFloat(a) / parseFloat(b);
+				scv.value=rs.value;
+			}
+			if(mult){
+				rs.value=parseFloat(a) * parseFloat(b);
+				scv.value=rs.value;
+			}
+		}
+	}
+</script>
+<body>
+	<div id="calc">
+		<div>
+			<span id="text1">Favour Basic Calculator <br> version 1.0.0</span>
+			<span id="top-right-box">&nbsp;</span>
+		</div>
+		<div id="line">&nbsp;</div>
+		<div id="display_area">
+			<input id="scv"><span id="operator"></span>
+			<input id="rs" style="float: right; direction: rtl;" class="result"></p>
+		</div>
+		<div id="line2">&nbsp;</div>
+		<div id="operation">
+		<table width="100%">
+			<tr>
+				<td><button class="op_btn" id="log" onclick="log()">log</button></td>
+				<td><button class="op_btn" id="cos" onclick="cos()">cos</button></td>
+				<td><button class="op_btn" id="sin" onclick="sin()">sin</button></td>
+				<td><button class="op_btn" id="tan" onclick="tan()">tan</button></td>
+			</tr>
+			<tr>
+				<td><button class="op_btn" onclick="sqr()">&#8730;</button></td>
+				<td><button class="op_btn" onclick="cbr()">&#8731;</button></td>
+				<td><button class="op_btn" onclick="rsp()"><span>x<sup>y</sup></span></button></td>
+				<td><button class="op_btn" onclick="pie()">&#8508;</button></td>
+			</tr>
+		</table>
+		</div>
+		<div id="line2">&nbsp;</div>
+		<div id="number_area">
+		<table align="center" width="100%">
+			<tr>
+				<td><button class="btn" onclick="button(7)">7</button></td>
+				<td><button class="btn" onclick="button(8)">8</button></td>
+				<td><button class="btn" onclick="button(9)">9</button></td>
+				<td><button class="btn" onclick="plus()">+</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn" onclick="button(6)">6</button></td>
+				<td><button class="btn" onclick="button(5)">5</button></td>
+				<td><button class="btn" onclick="button(4)">4</button></td>
+				<td><button class="btn" onclick="minus()">-</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn" onclick="button(3)">3</button></td>
+				<td><button class="btn" onclick="button(2)">2</button></td>
+				<td><button class="btn" onclick="button(1)">1</button></td>
+				<td><button class="btn" onclick="rat()">÷</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn" onclick="del()" style="color: red"><small>DEL</small></button></td>
+				<td><button class="btn" onclick="button(0)">0</button></td>
+				<td><button class="btn" onclick="ce()" style="color: red">CE</button></td>
+				<td><button class="btn" onclick="mult()">x</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button onclick="on()" class="btn" id="state">ON</button></td>
+				<td colspan="1"><button onclick="off()" class="btn" id="state">OFF</button></td>
+				<td colspan="1"><button onclick="opp()" class="btn">=</button></td>
+			</tr>
+		</table>
+		</div>
+		<p id="text2" align="center">&#169; Favour Corporation</p>
+	</div>
+</body>
+</html>
