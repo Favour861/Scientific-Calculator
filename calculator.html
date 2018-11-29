@@ -10,7 +10,7 @@
 	a="";
 	b="";
 	oprp="";
-	var op,t,h,m,s;
+	var op,t,h,m,s,r;
 	function timee(){
 		var t = new Date();
 		// h = t.getHours();
@@ -22,7 +22,8 @@
 	}
 	function del(){
 		if(screen){
-		scv.value=scv.value.slice(0, -1)
+		if(scv.value!=="0")
+			scv.value=scv.value.slice(0, -1)
 		}
 	}
 	function ce(){
@@ -37,6 +38,7 @@
 		scv.value=0;
 		operator.innerHTML="&nbsp;";
 		rs.value="";
+		r=0;
 	}
 	function off(){
 		screen=false;
@@ -47,7 +49,11 @@
 	function button(x){
 		if(screen){
 			if(scv.value=="0"){
-			scv.value=x;
+			if(x=="."){
+				scv.value+=x;
+			}else{
+				scv.value=x;
+			}
 			}
 			else {
 			scv.value=scv.value+x;
@@ -55,7 +61,7 @@
 		}
 	}
 	function ans(){
-		scv.value=rs.value;
+		scv.value=r;
 	}
 	function opr(y){
 		if(screen){
@@ -75,113 +81,132 @@
 			if(y=='pie'){
 				operator.innerHTML='&#8508;';
 			}
+			
 		}
 	}
 	function sin() {
 		if(screen){
 		operator.innerHTML="Sin("+scv.value+")";
-		rs.value=Math.sin(scv.value * Math.PI / 180);
+		r= Math.sin(scv.value * Math.PI / 180)
+		rs.value=r;
 		}
 	}
 	function cos() {
 		if(screen){
 		operator.innerHTML="Cos("+scv.value+")";
-		rs.value=Math.tos(scv.value * Math.PI / 180);
+		r = Math.cos(scv.value * Math.PI / 180)
+		rs.value= r;
 		}
 	}
 	function tan() {
 		if(screen){
 		operator.innerHTML="Tan("+scv.value+")";
-		rs.value=Math.tan(scv.value * Math.PI / 180);
+		r=Math.tan(scv.value * Math.PI / 180);
+		rs.value=r;
 		}
 	}
 	function cosh(){
 		if(screen){
 		operator.innerHTML="Cosh("+scv.value+")";
-		rs.value=Math.cosh(scv.value);
+		r=Math.cosh(scv.value);
+		rs.value=r;
 		}
 	}
 	function sinh(){
 		if(screen){
 		operator.innerHTML="Sinh("+scv.value+")";
-		rs.value=Math.sinh(scv.value);
+		r=Math.sinh(scv.value);
+		rs.value=r;
 		}
 	}
 	function Tanh(){
 		if(screen){
 		operator.innerHTML="Tanh("+scv.value+")";
-		rs.value=Math.tanh(scv.value);
+		r=Math.tanh(scv.value)
+		rs.value=r;
 		}
 	}
 	function sv() {
 		if(screen){
 		operator.innerHTML="sin<sup>-1</sup>("+scv.value+")";
-		rs.value= Math.asin(scv.value * Math.PI / 180);
+		r=Math.asin(scv.value * Math.PI / 180);
+		rs.value= r;
 		}
 	}
 	function cv() {
 		if(screen){
 		operator.innerHTML="cos<sup>-1</sup>("+scv.value+")";
-		rs.value= Math.acos(scv.value * Math.PI / 180);
+		r=Math.acos(scv.value * Math.PI / 180);
+		rs.value= r;
 		}
 	}
 	function tv() {
 		if(screen){
 		operator.innerHTML="tan<sup>-1</sup>("+scv.value+")";
-		rs.value= Math.atan(scv.value * Math.PI / 180);
+		r=Math.atan(scv.value * Math.PI / 180);
+		rs.value= r;
 		}
 	}
 	function log() {
 		if(screen){
 		operator.innerHTML="log("+scv.value+")";
-		rs.value=Math.log(scv.value);
+		r=Math.log(scv.value);
+		rs.value=r;
 		}
 	}
 	function sqrt() {
 		if(screen){
 		operator.innerHTML="&#8730("+scv.value+")";
-		rs.value=Math.sqrt(scv.value);
+		r=Math.sqrt(scv.value);
+		rs.value=r;
 		}
 	}
 	function sqrt() {
 		if(screen){
 		operator.innerHTML="&#8731("+scv.value+")";
-		rs.value=Math.cbrt(scv.value);
+		r=Math.cbrt(scv.value);
+		rs.value=r;
 		}
 	}
 	function pie() {
 		if(screen){
 		if(scv.value=="0"){
 			operator.innerHTML="&#8508";
-			rs.value=Math.PI;
+			r=Math.PI;
+			rs.value=r;
 		}else{
 			operator.innerHTML="&#8508("+scv.value+")";
-			rs.value=Math.PI*scv.value;
+			r=Math.PI*scv.value;
+			rs.value=r;
 		}
 		}
 	}
 	function exp() {
 		if(screen){
 		operator.innerHTML="E<sup>"+scv.value+"</sup>";
-		rs.value=Math.exp(scv.value);
+		r=Math.exp(scv.value);
+		rs.value=r;
 		}
 	}
 	function iox() {
 		if(screen){
 		operator.innerHTML="1/"+scv.value;
-		rs.value=1/scv.value;
+		r=1/scv.value;
+		rs.value=r;
 		}
 	}
 	function x2() {
 		if(screen){
 		operator.innerHTML=scv.value+"<sup>2</sup>";
-		rs.value=Math.pow(scv.value, 2);
+		r=Math.pow(scv.value, 2);
+		rs.value=r;
 		}
 	}
 	function x3() {
 		if(screen){
 		operator.innerHTML=scv.value+"<sup>3</sup>";
-		rs.value=Math.pow(scv.value, 3);
+		r=Math.pow(scv.value, 3);
+		rs.value=r;
 		}
 	}
 
@@ -191,21 +216,30 @@
 			operator.innerHTML='=';
 			if(oprp==""){
 				rs.value=scv.value;
+				r=rs.value;
 			}
 			if(oprp=='+'){
-				rs.value= parseFloat(a) + parseFloat(b)
+				r = parseFloat(a) + parseFloat(b);
+				rs.value=r
 			}
 			else if(oprp=='-'){
-				rs.value= parseFloat(a) - parseFloat(b)
+				rs.value= parseFloat(a) - parseFloat(b);
+				r=rs.value;
 			}
 			else if(oprp=='÷'){
-				rs.value= parseFloat(a) / parseFloat(b)
+				rs.value= parseFloat(a) / parseFloat(b);
+				r=rs.value;
 			}
 			else if(oprp=='x'){
-				rs.value= parseFloat(a) * parseFloat(b)
+				rs.value= parseFloat(a) * parseFloat(b);
+				r=rs.value;
 			}
 			else if(oprp=='x<sup>y</sup>'){
 				rs.value= Math.pow(a, b);
+				r=rs.value;
+			}
+			if(rs.value=="NaN"){
+				rs.value="Math Error";
 			}
 		}
 	}
