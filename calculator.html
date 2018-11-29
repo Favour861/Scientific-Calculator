@@ -10,7 +10,16 @@
 	a="";
 	b="";
 	oprp="";
-	var op;
+	var op,t,h,m,s;
+	function timee(){
+		var t = new Date();
+		// h = t.getHours();
+		// m = m.getMinutes();
+		// s = s.getSeconds();
+		d =t.toLocaleTimeString();
+		document.getElementById('top-right-box').innerHTML=d;
+		setTimeout(timee,1000)
+	}
 	function del(){
 		if(screen){
 		scv.value=scv.value.slice(0, -1)
@@ -19,20 +28,20 @@
 	function ce(){
 		if(screen){
 			scv.value=0;
-			operator.innerHTML="";
+			operator.innerHTML="&nbsp;";
 			rs.value="";
 		}
 	}
 	function on(){
 		screen=true;
 		scv.value=0;
-		operator.innerHTML="";
+		operator.innerHTML="&nbsp;";
 		rs.value="";
 	}
 	function off(){
 		screen=false;
 		scv.value="Screen Off";
-		operator.innerHTML="";
+		operator.innerHTML="&nbsp;";
 		rs.value="";
 	}
 	function button(x){
@@ -198,16 +207,10 @@
 			else if(oprp=='x<sup>y</sup>'){
 				rs.value= Math.pow(a, b);
 			}
-			else if(oprp=='x<sup>2</sup>'){
-				rs.value= Math.pow(a, 2);
-			}
-			else if(oprp=='x<sup>3</sup>'){
-				rs.value= Math.pow(a, 3);
-			}
 		}
 	}
 </script>
-<body>
+<body onload="timee()">
 	<div id="calc">
 		<div>
 			<span id="text1">Favour Basic Calculator <br> version 1.0.0</span>
@@ -216,7 +219,7 @@
 		<div id="line">&nbsp;</div>
 		<div id="display_area">
 			<input id="scv" value="Screen Off" style="width: 100%">
-			<div id="operator" style="font-size: 100%; text-align: right; display: inline-block; width: 100%">&nbsp;</div>
+			<div id="operator" style="font-size: 100%; text-align: right; display: block; width: 100%">&nbsp;</div>
 			<input id="rs" style="float: right; text-align: right;" class="result"></p>
 		</div>
 		<div id="line2">&nbsp;</div>
