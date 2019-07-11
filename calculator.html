@@ -61,7 +61,9 @@
 		}
 	}
 	function ans(){
+		if(screen){
 		scv.value=r;
+	}
 	}
 	function opr(y){
 		if(screen){
@@ -161,7 +163,7 @@
 		rs.value=r;
 		}
 	}
-	function sqrt() {
+	function cbrt() {
 		if(screen){
 		operator.innerHTML="&#8731("+scv.value+")";
 		r=Math.cbrt(scv.value);
@@ -213,16 +215,17 @@
 	function opp(){
 		if(screen){
 			b = scv.value;
+			op = operator.innerHTML;
 			operator.innerHTML='=';
 			if(oprp==""){
 				rs.value=scv.value;
 				r=rs.value;
 			}
-			if(oprp=='+'){
+			if(op=='+'){
 				r = parseFloat(a) + parseFloat(b);
-				rs.value=r
+				rs.value=r;
 			}
-			else if(oprp=='-'){
+			if(op=='-'){
 				rs.value= parseFloat(a) - parseFloat(b);
 				r=rs.value;
 			}
