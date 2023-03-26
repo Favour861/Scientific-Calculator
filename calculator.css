@@ -64,7 +64,7 @@ input{
 	margin-top: 10px;
 }
 #number_area{
-	background: #DC143C;
+	background: grey;
 	padding-bottom: 10px;
 	border-bottom: 2px solid white;
 	border-top: 2px solid white;
